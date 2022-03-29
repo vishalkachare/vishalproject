@@ -1,0 +1,12 @@
+{
+	"name": "LinkSer_SQLServer",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=vishaldbserver.database.windows.net;initial catalog=vishaldb;user id=vishaladmin",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDBGMDhBRjkzLUREQTktNEQxNS05MUM4LTdDMTM0Mjc1QkY0NF81ODMyNTA1MS1jZDAzLTQwNzgtYjQ2ZC04Y2Q4ZDU0MGU5M2IiDQp9"
+		}
+	}
+}

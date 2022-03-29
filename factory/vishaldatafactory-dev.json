@@ -1,0 +1,9 @@
+{
+	"name": "vishaldatafactory-dev",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "7171ad10-fd77-4d83-9b57-c8d51d66c7f2",
+		"tenantId": "a98f3a35-8169-49d0-a1f9-6489d2f21734"
+	}
+}
