@@ -1,0 +1,36 @@
+{
+	"name": "ds_dynamic_filename",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkSer_Storage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"CurrentFileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().CurrentFileName",
+					"type": "Expression"
+				},
+				"container": "importdata"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "ID;Name",
+				"type": "String"
+			}
+		]
+	}
+}
