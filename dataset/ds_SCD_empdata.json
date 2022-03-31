@@ -20,7 +20,11 @@
 		},
 		"schema": [
 			{
-				"name": "ID;Name",
+				"name": "ID",
+				"type": "String"
+			},
+			{
+				"name": "Name",
 				"type": "String"
 			}
 		]
