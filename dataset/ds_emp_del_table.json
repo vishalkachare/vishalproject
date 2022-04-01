@@ -16,6 +16,15 @@
 			{
 				"name": "Name",
 				"type": "varchar"
+			},
+			{
+				"name": "IsActive",
+				"type": "bit"
+			},
+			{
+				"name": "Eid",
+				"type": "int",
+				"precision": 10
 			}
 		],
 		"typeProperties": {

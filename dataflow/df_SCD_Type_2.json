@@ -3,11 +3,64 @@
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
-			"sources": [],
-			"sinks": [],
-			"transformations": [],
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_SCD_empdata",
+						"type": "DatasetReference"
+					},
+					"name": "TxtFileSrc"
+				},
+				{
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_emp_del_table",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "addIsactiveFlag"
+				}
+			],
 			"scriptLines": [
-				""
+				"source(output(",
+				"          ID as string,",
+				"          Name as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> TxtFileSrc",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false) ~> source1",
+				"TxtFileSrc derive(IsActive = 1) ~> addIsactiveFlag",
+				"addIsactiveFlag sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          ID as integer,",
+				"          Name as string,",
+				"          IsActive as boolean,",
+				"          Eid as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          ID,",
+				"          Name,",
+				"          IsActive",
+				"     )) ~> sink1"
 			]
 		}
 	}
