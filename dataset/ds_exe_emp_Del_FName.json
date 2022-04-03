@@ -1,0 +1,26 @@
+{
+	"name": "ds_exe_emp_Del_FName",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkSer_Storage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset.currentfilename",
+					"type": "Expression"
+				},
+				"container": "importdata"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

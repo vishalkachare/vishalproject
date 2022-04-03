@@ -48,6 +48,7 @@
 						"value": "@activity('Get Metadata1').output.childItems",
 						"type": "Expression"
 					},
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "Get Metadata2_LastModi",
@@ -60,12 +61,38 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": []
+							"userProperties": [],
+							"typeProperties": {
+								"dataset": {
+									"referenceName": "ds_exe_emp_Del_FName",
+									"type": "DatasetReference"
+								},
+								"fieldList": [
+									"itemName",
+									"lastModified"
+								],
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							}
 						}
 					]
 				}
 			}
 		],
+		"variables": {
+			"Var_FileName": {
+				"type": "String"
+			},
+			"Var_OldModifiedDate": {
+				"type": "String",
+				"defaultValue": "2020-04-03T03:12:54Z"
+			}
+		},
 		"annotations": []
 	}
 }
