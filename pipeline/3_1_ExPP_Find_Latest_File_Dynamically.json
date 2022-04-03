@@ -24,6 +24,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -51,7 +52,7 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "Get Metadata2_LastModi",
+							"name": "Get Metadata2",
 							"type": "GetMetadata",
 							"dependsOn": [],
 							"policy": {
@@ -64,13 +65,10 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataset": {
-									"referenceName": "ds_exe_emp_Del_FName",
+									"referenceName": "ds_exe_emp_dynamic_FName",
 									"type": "DatasetReference"
 								},
-								"fieldList": [
-									"itemName",
-									"lastModified"
-								],
+								"fieldList": [],
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
 									"enablePartitionDiscovery": false
