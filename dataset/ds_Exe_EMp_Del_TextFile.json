@@ -1,0 +1,23 @@
+{
+	"name": "ds_Exe_EMp_Del_TextFile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkSer_Storage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "EmpExcer1.txt",
+				"container": "importdata"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
