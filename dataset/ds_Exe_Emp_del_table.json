@@ -1,5 +1,5 @@
 {
-	"name": "ds_Exe_Emp_del_txt",
+	"name": "ds_Exe_Emp_del_table",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LinkSer_SQLServer",
