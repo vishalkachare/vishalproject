@@ -1,0 +1,21 @@
+{
+	"name": "ds_Exe_emp_del_txt_Folder",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkSer_Storage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
