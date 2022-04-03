@@ -1,0 +1,36 @@
+{
+	"name": "ds_exe_emp_dynamic_FName",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkSer_Storage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"currentfilename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().currentfilename",
+					"type": "Expression"
+				},
+				"container": "importdata"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "ID;Name",
+				"type": "String"
+			}
+		]
+	}
+}
