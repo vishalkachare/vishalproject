@@ -50,6 +50,9 @@
 				},
 				{
 					"name": "alterRow1"
+				},
+				{
+					"name": "filter1"
 				}
 			],
 			"scriptLines": [
@@ -82,8 +85,9 @@
 				"TxtFileSrc, select1 lookup(ID == SID,",
 				"     multiple: true,",
 				"     broadcast: 'auto')~> lookup1",
-				"lookup1 derive(IsActive = 0) ~> derivedColumn1",
+				"filter1 derive(IsActive = 0) ~> derivedColumn1",
 				"derivedColumn1 alterRow(updateIf(1==1)) ~> alterRow1",
+				"lookup1 filter(SIsActive==isBoolean('true')) ~> filter1",
 				"addIsactiveFlag sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -99,6 +103,7 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
+				"     saveOrder: 2,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          ID,",
@@ -121,7 +126,13 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> sink2"
+				"     saveOrder: 1,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          ID,",
+				"          Name,",
+				"          IsActive",
+				"     )) ~> sink2"
 			]
 		}
 	}
