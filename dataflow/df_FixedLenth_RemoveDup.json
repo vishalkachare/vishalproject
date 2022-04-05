@@ -1,0 +1,85 @@
+{
+	"name": "df_FixedLenth_RemoveDup",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_FiexedLenthFile_1",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_FiexedLenthFile_2",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "select1"
+				},
+				{
+					"name": "derivedColumn2"
+				},
+				{
+					"name": "select2"
+				},
+				{
+					"name": "union1"
+				},
+				{
+					"name": "aggregate1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Column_1 as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source(output(",
+				"          Column_1 as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source2",
+				"source1 derive(EmpID = substring(Column_1, 1, 1),",
+				"          EmpName = substring(Column_1, 2, 7),",
+				"          Salary = substring(Column_1, 9, 3),",
+				"          City = substring(Column_1, 12,4 )) ~> derivedColumn1",
+				"derivedColumn1 select(mapColumn(",
+				"          EmpID,",
+				"          EmpName,",
+				"          Salary,",
+				"          City",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"source2 derive(EmpId = substring(Column_1, 1, 1),",
+				"          EmpName = substring(Column_1, 2, 8),",
+				"          Salary = substring(Column_1, 10, 4),",
+				"          City = substring(Column_1, 14,4 )) ~> derivedColumn2",
+				"derivedColumn2 select(mapColumn(",
+				"          EmpId,",
+				"          EmpName,",
+				"          Salary,",
+				"          City",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select2",
+				"select1, select2 union(byName: true)~> union1",
+				"union1 aggregate(each(match(name!='EmpId'), $$ = first($$))) ~> aggregate1"
+			]
+		}
+	}
+}
