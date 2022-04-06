@@ -65,12 +65,12 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"source2 derive(EmpId = substring(Column_1, 1, 1),",
+				"source2 derive(EmpID = substring(Column_1, 1, 1),",
 				"          EmpName = substring(Column_1, 2, 8),",
 				"          Salary = substring(Column_1, 10, 4),",
 				"          City = substring(Column_1, 14,4 )) ~> derivedColumn2",
 				"derivedColumn2 select(mapColumn(",
-				"          EmpId,",
+				"          EmpID,",
 				"          EmpName,",
 				"          Salary,",
 				"          City",
@@ -78,7 +78,7 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select2",
 				"select1, select2 union(byName: true)~> union1",
-				"union1 aggregate(each(match(name!='EmpId'), $$ = first($$))) ~> aggregate1"
+				"union1 aggregate(each(match(name!='EmpID'), $$ = first($$))) ~> aggregate1"
 			]
 		}
 	}
