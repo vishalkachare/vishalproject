@@ -46,7 +46,7 @@
 				"     ignoreNullPivots: false) ~> unpivot1",
 				"unpivot1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     partitionFileNames:['outunpivot'],",
+				"     partitionFileNames:['outunpivot.csv'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     partitionBy('hash', 1)) ~> sink1"
