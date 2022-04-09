@@ -20,21 +20,27 @@
 		},
 		"schema": [
 			{
+				"name": "Id",
 				"type": "String"
 			},
 			{
+				"name": "Name",
 				"type": "String"
 			},
 			{
+				"name": "Gender",
 				"type": "String"
 			},
 			{
+				"name": "Country",
 				"type": "String"
 			},
 			{
+				"name": "Salary",
 				"type": "String"
 			},
 			{
+				"name": "Dept",
 				"type": "String"
 			}
 		]
